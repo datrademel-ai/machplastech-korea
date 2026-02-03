@@ -24,9 +24,9 @@ export default function Footer() {
       copyright: '2025 Machplastech Co., Ltd. All rights reserved.'
     },
     ko: {
-      title: '㈜맥플라스텍',
+      title: '㈜ 마하플라스텍',
       subtitle: '정밀 제조 및 엔지니어링 플라스틱',
-      location: '경상남도 양산시, 대한민국',
+      location: '경상남도 양산시 상북면 석계산단 2길 113 A, 대한민국',
       contact: '연락처',
       phone: '전화',
       email: '이메일',
@@ -38,7 +38,7 @@ export default function Footer() {
         automation: '자동화 시스템',
         export: '글로벌 수출'
       },
-      copyright: '2025 ㈜맥플라스텍. All rights reserved.'
+      copyright: '2025 ㈜마플라스텍. All rights reserved.'
     }
   }
 
