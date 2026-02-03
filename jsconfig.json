@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+---
+
+### 2. `.gitignore` 파일 추가
+
+**파일명:** `.gitignore`
+```
+/node_modules
+/.next
+/out
+.DS_Store
+*.log
+.env*.local
