@@ -10,37 +10,7 @@ export default function Plastics() {
       title: 'Engineering Plastics',
       subtitle: 'Premium Materials from Global Manufacturers',
       materials: {
-        title: 'Our Materials',
-        pom: {
-          title: 'POM (Polyacetal)',
-          desc: 'High strength, low friction, excellent dimensional stability',
-          apps: ['Gears & bearings', 'Automotive parts', 'Precision components']
-        },
-        pa: {
-          title: 'PA6 / PA66 (Nylon)',
-          desc: 'Superior mechanical properties, wear resistance, chemical stability',
-          apps: ['Industrial components', 'Electrical parts', 'Structural applications']
-        },
-        peek: {
-          title: 'PEEK',
-          desc: 'High-performance thermoplastic, extreme temperature resistance',
-          apps: ['Aerospace applications', 'Medical devices', 'High-temp environments']
-        },
-        pps: {
-          title: 'PPS',
-          desc: 'Excellent chemical resistance, high heat deflection temperature',
-          apps: ['Chemical processing', 'Electrical connectors', 'Automotive under-hood']
-        },
-        ptfe: {
-          title: 'PTFE (Teflon)',
-          desc: 'Lowest friction coefficient, excellent chemical inertness',
-          apps: ['Seals & gaskets', 'Food processing', 'Chemical equipment']
-        },
-        custom: {
-          title: 'Custom Materials',
-          desc: 'Specialized materials sourcing for specific requirements',
-          apps: ['Global sourcing network', 'Technical consultation', 'Material testing']
-        }
+        title: 'Our Materials'
       },
       why: {
         title: 'Why Choose Our Materials',
@@ -62,37 +32,7 @@ export default function Plastics() {
       title: '엔지니어링 플라스틱',
       subtitle: '글로벌 제조사의 프리미엄 소재',
       materials: {
-        title: '취급 소재',
-        pom: {
-          title: 'POM (폴리아세탈)',
-          desc: '고강도, 저마찰, 우수한 치수 안정성',
-          apps: ['기어 및 베어링', '자동차 부품', '정밀 부품']
-        },
-        pa: {
-          title: 'PA6 / PA66 (나일론)',
-          desc: '우수한 기계적 특성, 내마모성, 화학적 안정성',
-          apps: ['산업용 부품', '전기 부품', '구조 응용']
-        },
-        peek: {
-          title: 'PEEK',
-          desc: '고성능 열가소성 플라스틱, 극한 내열성',
-          apps: ['항공우주 응용', '의료 기기', '고온 환경']
-        },
-        pps: {
-          title: 'PPS',
-          desc: '우수한 내화학성, 높은 열변형 온도',
-          apps: ['화학 공정', '전기 커넥터', '자동차 엔진룸']
-        },
-        ptfe: {
-          title: 'PTFE (테프론)',
-          desc: '최저 마찰 계수, 우수한 화학적 불활성',
-          apps: ['씰 및 가스켓', '식품 가공', '화학 장비']
-        },
-        custom: {
-          title: '맞춤 소재',
-          desc: '특정 요구사항을 위한 전문 소재 소싱',
-          apps: ['글로벌 소싱 네트워크', '기술 상담', '소재 테스트']
-        }
+        title: '취급 소재'
       },
       why: {
         title: '선택해야 하는 이유',
@@ -114,6 +54,39 @@ export default function Plastics() {
 
   const t = content[language]
 
+  const materials = [
+    {
+      title: language === 'en' ? 'POM (Polyacetal)' : 'POM (폴리아세탈)',
+      desc: language === 'en' ? 'High strength, low friction, excellent dimensional stability' : '고강도, 저마찰, 우수한 치수 안정성',
+      apps: language === 'en' ? ['Gears & bearings', 'Automotive parts', 'Precision components'] : ['기어 및 베어링', '자동차 부품', '정밀 부품']
+    },
+    {
+      title: language === 'en' ? 'PA6 / PA66 (Nylon)' : 'PA6 / PA66 (나일론)',
+      desc: language === 'en' ? 'Superior mechanical properties, wear resistance, chemical stability' : '우수한 기계적 특성, 내마모성, 화학적 안정성',
+      apps: language === 'en' ? ['Industrial components', 'Electrical parts', 'Structural applications'] : ['산업용 부품', '전기 부품', '구조 응용']
+    },
+    {
+      title: 'PEEK',
+      desc: language === 'en' ? 'High-performance thermoplastic, extreme temperature resistance' : '고성능 열가소성 플라스틱, 극한 내열성',
+      apps: language === 'en' ? ['Aerospace applications', 'Medical devices', 'High-temp environments'] : ['항공우주 응용', '의료 기기', '고온 환경']
+    },
+    {
+      title: 'PPS',
+      desc: language === 'en' ? 'Excellent chemical resistance, high heat deflection temperature' : '우수한 내화학성, 높은 열변형 온도',
+      apps: language === 'en' ? ['Chemical processing', 'Electrical connectors', 'Automotive under-hood'] : ['화학 공정', '전기 커넥터', '자동차 엔진룸']
+    },
+    {
+      title: language === 'en' ? 'PTFE (Teflon)' : 'PTFE (테프론)',
+      desc: language === 'en' ? 'Lowest friction coefficient, excellent chemical inertness' : '최저 마찰 계수, 우수한 화학적 불활성',
+      apps: language === 'en' ? ['Seals & gaskets', 'Food processing', 'Chemical equipment'] : ['씰 및 가스켓', '식품 가공', '화학 장비']
+    },
+    {
+      title: language === 'en' ? 'Custom Materials' : '맞춤 소재',
+      desc: language === 'en' ? 'Specialized materials sourcing for specific requirements' : '특정 요구사항을 위한 전문 소재 소싱',
+      apps: language === 'en' ? ['Global sourcing network', 'Technical consultation', 'Material testing'] : ['글로벌 소싱 네트워크', '기술 상담', '소재 테스트']
+    }
+  ]
+
   return (
     <div className="max-w-7xl mx-auto py-20 px-8">
       <h1 className="text-5xl font-bold text-center mb-6 text-blue-900">{t.title}</h1>
@@ -122,7 +95,7 @@ export default function Plastics() {
       <div className="mb-16">
         <h2 className="text-3xl font-bold mb-8 text-blue-900">{t.materials.title}</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {Object.values(t.materials).slice(0, 6).map((material, i) => (
+          {materials.map((material, i) => (
             <div key={i} className="bg-white border border-gray-200 rounded-xl p-8">
               <h3 className="text-2xl font-bold mb-4 text-blue-900">{material.title}</h3>
               <p className="text-gray-700 mb-4">{material.desc}</p>
