@@ -106,4 +106,69 @@ export default function About() {
         </div>
 
         <div className="bg-gray-100 rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-6 text-blue-900">{t.values.title}</h2
+          <h2 className="text-2xl font-bold mb-6 text-blue-900">{t.values.title}</h2>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-xl font-bold mb-2 text-blue-900">🎯 {t.values.quality.title}</h3>
+              <p className="text-gray-700">{t.values.quality.desc}</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-2 text-blue-900">🤝 {t.values.customer.title}</h3>
+              <p className="text-gray-700">{t.values.customer.desc}</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-2 text-blue-900">🌐 {t.values.global.title}</h3>
+              <p className="text-gray-700">{t.values.global.desc}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mb-16">
+        <h2 className="text-3xl font-bold text-center mb-12 text-blue-900">{t.offer.title}</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-white border border-gray-200 rounded-xl p-8">
+            <div className="text-5xl mb-4">⚙️</div>
+            <h3 className="text-xl font-bold mb-3 text-blue-900">{t.offer.manufacturing.title}</h3>
+            <p className="text-gray-700">{t.offer.manufacturing.desc}</p>
+          </div>
+
+          <div className="bg-white border border-gray-200 rounded-xl p-8">
+            <div className="text-5xl mb-4">🔬</div>
+            <h3 className="text-xl font-bold mb-3 text-blue-900">{t.offer.materials.title}</h3>
+            <p className="text-gray-700">{t.offer.materials.desc}</p>
+          </div>
+
+          <div className="bg-white border border-gray-200 rounded-xl p-8">
+            <div className="text-5xl mb-4">🤖</div>
+            <h3 className="text-xl font-bold mb-3 text-blue-900">{t.offer.automation.title}</h3>
+            <p className="text-gray-700">{t.offer.automation.desc}</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-gradient-to-r from-blue-900 to-blue-700 rounded-xl p-12 text-white">
+        <h2 className="text-3xl font-bold text-center mb-8">{t.presence.title}</h2>
+        <div className="grid md:grid-cols-2 gap-12">
+          <div className="bg-white/10 rounded-lg p-8">
+            <h3 className="text-2xl font-bold mb-4">🇰🇷 {t.presence.korea.title}</h3>
+            <p className="mb-2"><strong>{t.presence.korea.company}</strong></p>
+            <p className="mb-2">{t.presence.korea.location}</p>
+            <p className="mb-2">{language === 'en' ? 'Phone:' : '전화:'} {t.presence.korea.phone}</p>
+            <p className="mb-2">{language === 'en' ? 'Email:' : '이메일:'} {t.presence.korea.email}</p>
+            <p className="mt-4 text-blue-200">{t.presence.korea.desc}</p>
+          </div>
+
+          <div className="bg-white/10 rounded-lg p-8">
+            <h3 className="text-2xl font-bold mb-4">🇦🇺 {t.presence.australia.title}</h3>
+            <p className="mb-2"><strong>{t.presence.australia.company}</strong></p>
+            <p className="mb-2">{t.presence.australia.location}</p>
+            <p className="mb-2">{language === 'en' ? 'Phone:' : '전화:'} {t.presence.australia.phone}</p>
+            <p className="mb-2">{language === 'en' ? 'Email:' : '이메일:'} {t.presence.australia.email}</p>
+            <p className="mt-4 text-blue-200">{t.presence.australia.desc}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
