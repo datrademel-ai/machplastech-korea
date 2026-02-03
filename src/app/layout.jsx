@@ -1,6 +1,7 @@
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { LanguageProvider } from '@/contexts/LanguageContext'
 
 export const metadata = {
   title: 'Machplastech - Precision Manufacturing & Engineering Plastics',
@@ -12,9 +13,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <LanguageProvider>
+          <Header />
+          {children}
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   )
