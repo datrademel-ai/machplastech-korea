@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Home() {
@@ -24,7 +25,7 @@ export default function Home() {
         plastics: {
           title: 'Engineering Plastics',
           desc: 'Premium engineering plastic materials from global manufacturers',
-          items: ['POM, PA6/PA66, PEEK', 'PPS, PTFE Materials', 'Custom Sourcing', 'Technical Support']
+          items: ['POM, PA6/PA66, ABS', 'MP5000, PTFE Materials', 'Custom Sourcing', 'Technical Support']
         },
         automation: {
           title: 'Automation Systems',
@@ -74,7 +75,7 @@ export default function Home() {
         plastics: {
           title: '엔지니어링 플라스틱',
           desc: '글로벌 제조사의 프리미엄 엔지니어링 플라스틱 소재',
-          items: ['POM, PA6/PA66, PEEK', 'PPS, PTFE 소재', '맞춤 소싱', '기술 지원']
+          items: ['POM, PA6/PA66, ABS', 'MP5000, PTFE 소재', '맞춤 소싱', '기술 지원']
         },
         automation: {
           title: '자동화 시스템',
@@ -111,6 +112,30 @@ export default function Home() {
 
   const t = content[language]
 
+  const businessCards = [
+    {
+      href: '/machining',
+      title: t.business.machining.title,
+      desc: t.business.machining.desc,
+      items: t.business.machining.items,
+      image: '/images/machining/cnc-machine.jpg'
+    },
+    {
+      href: '/plastics',
+      title: t.business.plastics.title,
+      desc: t.business.plastics.desc,
+      items: t.business.plastics.items,
+      image: '/images/about/materials.jpg'
+    },
+    {
+      href: '/automation',
+      title: t.business.automation.title,
+      desc: t.business.automation.desc,
+      items: t.business.automation.items,
+      image: '/images/automation/industrial_robot.webp'
+    }
+  ]
+
   return (
     <>
       <section className="bg-gradient-to-br from-blue-900 to-blue-600 text-white py-24 px-8 text-center">
@@ -126,38 +151,27 @@ export default function Home() {
         <h2 className="text-4xl font-bold text-center mb-12 text-blue-900">{t.business.title}</h2>
         
         <div className="grid md:grid-cols-3 gap-8">
-          <Link href="/machining" className="border border-gray-200 rounded-xl p-8 hover:shadow-lg transition group">
-            <div className="text-5xl mb-4">⚙️</div>
-            <h3 className="text-2xl font-bold mb-4 text-blue-900 group-hover:text-blue-700">{t.business.machining.title}</h3>
-            <p className="text-gray-700 mb-4">{t.business.machining.desc}</p>
-            <ul className="space-y-2 text-gray-600 text-sm">
-              {t.business.machining.items.map((item, i) => (
-                <li key={i}>• {item}</li>
-              ))}
-            </ul>
-          </Link>
-
-          <Link href="/plastics" className="border border-gray-200 rounded-xl p-8 hover:shadow-lg transition group">
-            <div className="text-5xl mb-4">🔬</div>
-            <h3 className="text-2xl font-bold mb-4 text-blue-900 group-hover:text-blue-700">{t.business.plastics.title}</h3>
-            <p className="text-gray-700 mb-4">{t.business.plastics.desc}</p>
-            <ul className="space-y-2 text-gray-600 text-sm">
-              {t.business.plastics.items.map((item, i) => (
-                <li key={i}>• {item}</li>
-              ))}
-            </ul>
-          </Link>
-
-          <Link href="/automation" className="border border-gray-200 rounded-xl p-8 hover:shadow-lg transition group">
-            <div className="text-5xl mb-4">🤖</div>
-            <h3 className="text-2xl font-bold mb-4 text-blue-900 group-hover:text-blue-700">{t.business.automation.title}</h3>
-            <p className="text-gray-700 mb-4">{t.business.automation.desc}</p>
-            <ul className="space-y-2 text-gray-600 text-sm">
-              {t.business.automation.items.map((item, i) => (
-                <li key={i}>• {item}</li>
-              ))}
-            </ul>
-          </Link>
+          {businessCards.map((card, i) => (
+            <Link key={i} href={card.href} className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition group">
+              <div className="relative h-48">
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-2xl font-bold mb-4 text-blue-900 group-hover:text-blue-700">{card.title}</h3>
+                <p className="text-gray-700 mb-4">{card.desc}</p>
+                <ul className="space-y-2 text-gray-600 text-sm">
+                  {card.items.map((item, j) => (
+                    <li key={j}>• {item}</li>
+                  ))}
+                </ul>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -167,25 +181,42 @@ export default function Home() {
           
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-5xl mb-4">🎯</div>
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
               <h3 className="text-xl font-bold mb-3 text-blue-900">{t.why.quality.title}</h3>
               <p className="text-gray-600">{t.why.quality.desc}</p>
             </div>
 
             <div className="text-center">
-              <div className="text-5xl mb-4">🌐</div>
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
               <h3 className="text-xl font-bold mb-3 text-blue-900">{t.why.network.title}</h3>
               <p className="text-gray-600">{t.why.network.desc}</p>
             </div>
 
             <div className="text-center">
-              <div className="text-5xl mb-4">⚡</div>
+              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
               <h3 className="text-xl font-bold mb-3 text-blue-900">{t.why.delivery.title}</h3>
               <p className="text-gray-600">{t.why.delivery.desc}</p>
             </div>
 
             <div className="text-center">
-              <div className="text-5xl mb-4">🛠️</div>
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
               <h3 className="text-xl font-bold mb-3 text-blue-900">{t.why.support.title}</h3>
               <p className="text-gray-600">{t.why.support.desc}</p>
             </div>
