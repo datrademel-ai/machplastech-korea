@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Machining() {
@@ -14,17 +15,20 @@ export default function Machining() {
         cnc: {
           title: 'CNC Machining',
           desc: 'Computer numerical control machining for complex parts',
-          items: ['CNC Turning (Lathe)', 'CNC Milling', '5-Axis Machining', 'Multi-Axis Complex Machining']
+          items: ['CNC Turning (Lathe)', 'CNC Milling', '5-Axis Machining', 'Multi-Axis Complex Machining'],
+          image: '/images/machining/cnc-machine.jpg'
         },
         precision: {
           title: 'Precision Processing',
           desc: 'High-accuracy machining for demanding applications',
-          items: ['Surface Grinding', 'Cylindrical Grinding', 'Wire EDM', 'Die-Sinking EDM']
+          items: ['Surface Grinding', 'Cylindrical Grinding', 'Wire EDM', 'Die-Sinking EDM'],
+          image: '/images/machining/grinding.jpg'
         },
         special: {
           title: 'Special Processing',
           desc: 'Specialized machining for unique requirements',
-          items: ['Laser Cutting', 'Waterjet Cutting', 'Deep Hole Drilling', 'Thread Processing']
+          items: ['Laser Cutting', 'Waterjet Cutting', 'Deep Hole Drilling', 'Thread Processing'],
+          image: '/images/machining/laser-cutting.jpg'
         }
       },
       equipment: {
@@ -64,17 +68,20 @@ export default function Machining() {
         cnc: {
           title: 'CNC 가공',
           desc: '복잡한 부품을 위한 컴퓨터 수치 제어 가공',
-          items: ['CNC 선반 가공', 'CNC 밀링 가공', '5축 가공', '다축 복합 가공']
+          items: ['CNC 선반 가공', 'CNC 밀링 가공', '5축 가공', '다축 복합 가공'],
+          image: '/images/machining/cnc-machine.jpg'
         },
         precision: {
           title: '정밀 가공',
           desc: '까다로운 응용을 위한 고정밀 가공',
-          items: ['평면 연삭', '원통 연삭', '와이어 방전 가공 (Wire EDM)', '형조 방전 가공 (Die-Sinking EDM)']
+          items: ['평면 연삭', '원통 연삭', '와이어 방전 가공 (Wire EDM)', '형조 방전 가공 (Die-Sinking EDM)'],
+          image: '/images/machining/grinding.jpg'
         },
         special: {
           title: '특수 가공',
           desc: '특수 요구사항을 위한 전문 가공',
-          items: ['레이저 커팅', '워터젯 커팅', '심공 드릴링', '나사 가공']
+          items: ['레이저 커팅', '워터젯 커팅', '심공 드릴링', '나사 가공'],
+          image: '/images/machining/laser-cutting.jpg'
         }
       },
       equipment: {
@@ -110,47 +117,42 @@ export default function Machining() {
 
   const t = content[language]
 
+  const capabilities = [
+    { ...t.capabilities.cnc },
+    { ...t.capabilities.precision },
+    { ...t.capabilities.special }
+  ]
+
   return (
     <div className="max-w-7xl mx-auto py-20 px-8">
       <h1 className="text-5xl font-bold text-center mb-6 text-blue-900">{t.title}</h1>
       <p className="text-xl text-center text-gray-600 mb-16">{t.subtitle}</p>
 
-      {/* Capabilities Section */}
+      {/* Capabilities Section with Images */}
       <div className="mb-16">
         <h2 className="text-3xl font-bold mb-8 text-blue-900">{t.capabilities.title}</h2>
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white border border-gray-200 rounded-xl p-8">
-            <div className="text-6xl mb-6">🔧</div>
-            <h3 className="text-2xl font-bold mb-4 text-blue-900">{t.capabilities.cnc.title}</h3>
-            <p className="text-gray-700 mb-4">{t.capabilities.cnc.desc}</p>
-            <ul className="space-y-3 text-gray-600">
-              {t.capabilities.cnc.items.map((item, i) => (
-                <li key={i}>• {item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="bg-white border border-gray-200 rounded-xl p-8">
-            <div className="text-6xl mb-6">⚙️</div>
-            <h3 className="text-2xl font-bold mb-4 text-blue-900">{t.capabilities.precision.title}</h3>
-            <p className="text-gray-700 mb-4">{t.capabilities.precision.desc}</p>
-            <ul className="space-y-3 text-gray-600">
-              {t.capabilities.precision.items.map((item, i) => (
-                <li key={i}>• {item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="bg-white border border-gray-200 rounded-xl p-8">
-            <div className="text-6xl mb-6">✨</div>
-            <h3 className="text-2xl font-bold mb-4 text-blue-900">{t.capabilities.special.title}</h3>
-            <p className="text-gray-700 mb-4">{t.capabilities.special.desc}</p>
-            <ul className="space-y-3 text-gray-600">
-              {t.capabilities.special.items.map((item, i) => (
-                <li key={i}>• {item}</li>
-              ))}
-            </ul>
-          </div>
+          {capabilities.map((cap, i) => (
+            <div key={i} className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition">
+              <div className="relative h-48">
+                <Image
+                  src={cap.image}
+                  alt={cap.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-blue-900">{cap.title}</h3>
+                <p className="text-gray-700 mb-4 text-sm">{cap.desc}</p>
+                <ul className="space-y-2 text-gray-600 text-sm">
+                  {cap.items.map((item, j) => (
+                    <li key={j}>• {item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -174,7 +176,9 @@ export default function Machining() {
           <div className="grid grid-cols-2 gap-4">
             {t.materials.items.map((item, i) => (
               <div key={i} className="flex items-center gap-2">
-                <span className="text-blue-500">✓</span>
+                <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
                 <span className="text-gray-700">{item}</span>
               </div>
             ))}

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Automation() {
@@ -14,17 +15,20 @@ export default function Automation() {
         agricultural: {
           title: 'Agricultural Automation',
           desc: 'Smart farming solutions for modern agriculture',
-          items: ['Automated harvesting systems', 'Smart irrigation control', 'Crop monitoring systems', 'Sorting & packaging automation']
+          items: ['Automated harvesting systems', 'Smart irrigation control', 'Crop monitoring systems', 'Sorting & packaging automation'],
+          image: '/images/automation/smart_farm.jpg'
         },
         industrial: {
           title: 'Industrial Automation',
           desc: 'Complete automation for manufacturing facilities',
-          items: ['Robotic systems', 'Conveyor automation', 'Quality control systems', 'Process automation']
+          items: ['Robotic systems', 'Conveyor automation', 'Quality control systems', 'Process automation'],
+          image: '/images/automation/industrial_robot.webp'
         },
         production: {
           title: 'Production Automation',
           desc: 'Streamlined production line solutions',
-          items: ['Assembly line automation', 'Material handling systems', 'Packaging automation', 'Integration services']
+          items: ['Assembly line automation', 'Material handling systems', 'Packaging automation', 'Integration services'],
+          image: '/images/automation/conveyor.jpg'
         }
       },
       why: {
@@ -57,17 +61,20 @@ export default function Automation() {
         agricultural: {
           title: '농업 자동화',
           desc: '현대 농업을 위한 스마트 팜 솔루션',
-          items: ['자동 수확 시스템', '스마트 관개 제어', '작물 모니터링 시스템', '선별 및 포장 자동화']
+          items: ['자동 수확 시스템', '스마트 관개 제어', '작물 모니터링 시스템', '선별 및 포장 자동화'],
+          image: '/images/automation/smart_farm.jpg'
         },
         industrial: {
           title: '산업 자동화',
           desc: '제조 시설을 위한 완전한 자동화',
-          items: ['로봇 시스템', '컨베이어 자동화', '품질 관리 시스템', '공정 자동화']
+          items: ['로봇 시스템', '컨베이어 자동화', '품질 관리 시스템', '공정 자동화'],
+          image: '/images/automation/industrial_robot.webp'
         },
         production: {
           title: '생산 자동화',
           desc: '효율적인 생산 라인 솔루션',
-          items: ['조립 라인 자동화', '자재 취급 시스템', '포장 자동화', '통합 서비스']
+          items: ['조립 라인 자동화', '자재 취급 시스템', '포장 자동화', '통합 서비스'],
+          image: '/images/automation/conveyor.jpg'
         }
       },
       why: {
@@ -96,6 +103,12 @@ export default function Automation() {
 
   const t = content[language]
 
+  const solutions = [
+    { ...t.solutions.agricultural },
+    { ...t.solutions.industrial },
+    { ...t.solutions.production }
+  ]
+
   return (
     <div className="max-w-7xl mx-auto py-20 px-8">
       <h1 className="text-5xl font-bold text-center mb-6 text-blue-900">{t.title}</h1>
@@ -104,38 +117,27 @@ export default function Automation() {
       <div className="mb-16">
         <h2 className="text-3xl font-bold mb-8 text-blue-900">{t.solutions.title}</h2>
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white border border-gray-200 rounded-xl p-8">
-            <div className="text-6xl mb-6">🌾</div>
-            <h3 className="text-2xl font-bold mb-4 text-blue-900">{t.solutions.agricultural.title}</h3>
-            <p className="text-gray-700 mb-4">{t.solutions.agricultural.desc}</p>
-            <ul className="space-y-3 text-gray-600">
-              {t.solutions.agricultural.items.map((item, i) => (
-                <li key={i}>• {item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="bg-white border border-gray-200 rounded-xl p-8">
-            <div className="text-6xl mb-6">🏭</div>
-            <h3 className="text-2xl font-bold mb-4 text-blue-900">{t.solutions.industrial.title}</h3>
-            <p className="text-gray-700 mb-4">{t.solutions.industrial.desc}</p>
-            <ul className="space-y-3 text-gray-600">
-              {t.solutions.industrial.items.map((item, i) => (
-                <li key={i}>• {item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="bg-white border border-gray-200 rounded-xl p-8">
-            <div className="text-6xl mb-6">⚙️</div>
-            <h3 className="text-2xl font-bold mb-4 text-blue-900">{t.solutions.production.title}</h3>
-            <p className="text-gray-700 mb-4">{t.solutions.production.desc}</p>
-            <ul className="space-y-3 text-gray-600">
-              {t.solutions.production.items.map((item, i) => (
-                <li key={i}>• {item}</li>
-              ))}
-            </ul>
-          </div>
+          {solutions.map((sol, i) => (
+            <div key={i} className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition">
+              <div className="relative h-48">
+                <Image
+                  src={sol.image}
+                  alt={sol.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-blue-900">{sol.title}</h3>
+                <p className="text-gray-700 mb-4 text-sm">{sol.desc}</p>
+                <ul className="space-y-2 text-gray-600 text-sm">
+                  {sol.items.map((item, j) => (
+                    <li key={j}>• {item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -143,27 +145,44 @@ export default function Automation() {
         <h2 className="text-3xl font-bold text-center mb-8 text-blue-900">{t.why.title}</h2>
         <div className="grid md:grid-cols-4 gap-8">
           <div className="text-center">
-            <div className="text-5xl mb-4">🎯</div>
-            <h3 className="text-xl font-bold mb-3 text-blue-900">{t.why.quality.title}</h3>
-            <p className="text-gray-600">{t.why.quality.desc}</p>
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-bold mb-3 text-blue-900">{t.why.quality.title}</h3>
+            <p className="text-gray-600 text-sm">{t.why.quality.desc}</p>
           </div>
 
           <div className="text-center">
-            <div className="text-5xl mb-4">💡</div>
-            <h3 className="text-xl font-bold mb-3 text-blue-900">{t.why.innovation.title}</h3>
-            <p className="text-gray-600">{t.why.innovation.desc}</p>
+            <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-bold mb-3 text-blue-900">{t.why.innovation.title}</h3>
+            <p className="text-gray-600 text-sm">{t.why.innovation.desc}</p>
           </div>
 
           <div className="text-center">
-            <div className="text-5xl mb-4">💰</div>
-            <h3 className="text-xl font-bold mb-3 text-blue-900">{t.why.cost.title}</h3>
-            <p className="text-gray-600">{t.why.cost.desc}</p>
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-bold mb-3 text-blue-900">{t.why.cost.title}</h3>
+            <p className="text-gray-600 text-sm">{t.why.cost.desc}</p>
           </div>
 
           <div className="text-center">
-            <div className="text-5xl mb-4">🛠️</div>
-            <h3 className="text-xl font-bold mb-3 text-blue-900">{t.why.support.title}</h3>
-            <p className="text-gray-600">{t.why.support.desc}</p>
+            <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-bold mb-3 text-blue-900">{t.why.support.title}</h3>
+            <p className="text-gray-600 text-sm">{t.why.support.desc}</p>
           </div>
         </div>
       </div>
