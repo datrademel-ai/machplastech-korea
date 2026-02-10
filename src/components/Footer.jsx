@@ -38,7 +38,7 @@ export default function Footer() {
         automation: '자동화 시스템',
         export: '글로벌 수출'
       },
-      copyright: '2025 ㈜마플라스텍. All rights reserved.'
+      copyright: '2025 ㈜마하플라스텍. All rights reserved.'
     }
   }
 
